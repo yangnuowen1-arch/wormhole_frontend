@@ -1,0 +1,418 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - complementary [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - generic [ref=e8]:
+            - generic [ref=e9]: ◈
+            - generic [ref=e10]:
+              - generic [ref=e11]: 智能工作台
+              - generic [ref=e12]: 企业资源中心
+          - navigation [ref=e13]:
+            - button "⌂ 首页" [ref=e14]:
+              - generic [ref=e15]: ⌂
+              - text: 首页
+            - button "◎ 发现" [ref=e16]:
+              - generic [ref=e17]: ◎
+              - text: 发现
+            - button "☆ 收藏" [ref=e18]:
+              - generic [ref=e19]: ☆
+              - text: 收藏
+            - button "◷ 最近" [ref=e20]:
+              - generic [ref=e21]: ◷
+              - text: 最近
+            - button "❏ 收藏夹" [ref=e22]:
+              - generic [ref=e23]: ❏
+              - text: 收藏夹
+            - button "⛨ 安全" [ref=e24]:
+              - generic [ref=e25]: ⛨
+              - text: 安全
+        - generic [ref=e27]:
+          - generic [ref=e28]: 张
+          - generic [ref=e29]:
+            - generic [ref=e30]: testUser
+            - generic [ref=e31]: zhang@company.io
+    - generic [ref=e32]:
+      - generic [ref=e33]:
+        - button "打开菜单" [active] [ref=e380]:
+          - img [ref=e381]
+        - generic [ref=e383]: 智能工作台
+        - button "通知" [ref=e36]: ◔
+      - main [ref=e39]:
+        - generic [ref=e40]:
+          - heading "早上好👋" [level=1] [ref=e393]
+          - paragraph [ref=e42]: 今天有 3 个新工具值得一看，快去发现吧。
+          - generic [ref=e43]:
+            - generic [ref=e44]: ⌕
+            - textbox "搜索工具、文档…" [ref=e45]
+          - generic [ref=e47]:
+            - button "</> GitHub" [ref=e49]:
+              - generic [ref=e50]: </>
+              - text: GitHub
+            - button "▲ Vercel" [ref=e51]:
+              - generic [ref=e52]: ▲
+              - text: Vercel
+            - button "❖ Figma" [ref=e53]:
+              - generic [ref=e54]: ❖
+              - text: Figma
+            - button "✳ Claude" [ref=e55]:
+              - generic [ref=e56]: ✳
+              - text: Claude
+            - button "▤ Linear" [ref=e57]:
+              - generic [ref=e58]: ▤
+              - text: Linear
+            - button "⬡ Supabase" [ref=e59]:
+              - generic [ref=e60]: ⬡
+              - text: Supabase
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - generic [ref=e64]: ● 在线
+            - generic [ref=e65]: ✦
+            - generic [ref=e66]:
+              - heading "AI 助手" [level=3] [ref=e67]
+              - paragraph [ref=e68]: 查找工具、对比资源、生成报告，为你的工作流量身推荐。
+              - button "打开助手 →" [ref=e69]
+          - generic [ref=e70]:
+            - generic [ref=e71]:
+              - generic [ref=e72]:
+                - generic [ref=e73]: 📈
+                - text: 今日推荐
+                - generic [ref=e74]: "4"
+              - button "查看全部" [ref=e75]
+            - list [ref=e76]:
+              - listitem [ref=e77]:
+                - generic [ref=e78]: ⚡
+                - generic [ref=e79]:
+                  - generic [ref=e80]: 用 Vercel Edge Config 更快发布
+                  - generic [ref=e81]: Vercel 博客
+                - generic [ref=e82]: 1 小时前
+              - listitem [ref=e83]:
+                - generic [ref=e84]: ✳
+                - generic [ref=e85]:
+                  - generic [ref=e86]: Claude 3.5：工程师需要了解的要点
+                  - generic [ref=e87]: Anthropic
+                - generic [ref=e88]: 3 小时前
+              - listitem [ref=e89]:
+                - generic [ref=e90]: ❖
+                - generic [ref=e91]:
+                  - generic [ref=e92]: 用 Figma Variables 打造可扩展的设计系统
+                  - generic [ref=e93]: Figma
+                - generic [ref=e94]: 5 小时前
+              - listitem [ref=e95]:
+                - generic [ref=e96]: ⬢
+                - generic [ref=e97]:
+                  - generic [ref=e98]: 大规模零停机 Postgres 迁移实践
+                  - generic [ref=e99]: PlanetScale
+                - generic [ref=e100]: 8 小时前
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - heading "★ 常用置顶 5 个" [level=2] [ref=e103]:
+              - generic [ref=e104]: ★
+              - text: 常用置顶
+              - generic [ref=e105]: 5 个
+            - button "管理 ⌄" [ref=e106]
+          - generic [ref=e107]:
+            - link "Cl Claude claude.ai" [ref=e108] [cursor=pointer]:
+              - /url: https://claude.ai
+              - generic [ref=e109]: Cl
+              - generic [ref=e110]:
+                - generic [ref=e111]: Claude
+                - generic [ref=e112]: claude.ai
+            - link "Ve Vercel vercel.com" [ref=e113] [cursor=pointer]:
+              - /url: https://vercel.com
+              - generic [ref=e114]: Ve
+              - generic [ref=e115]:
+                - generic [ref=e116]: Vercel
+                - generic [ref=e117]: vercel.com
+            - link "Fi Figma figma.com" [ref=e118] [cursor=pointer]:
+              - /url: https://figma.com
+              - generic [ref=e119]: Fi
+              - generic [ref=e120]:
+                - generic [ref=e121]: Figma
+                - generic [ref=e122]: figma.com
+            - link "Li Linear linear.app" [ref=e123] [cursor=pointer]:
+              - /url: https://linear.app
+              - generic [ref=e124]: Li
+              - generic [ref=e125]:
+                - generic [ref=e126]: Linear
+                - generic [ref=e127]: linear.app
+            - link "Gr Grafana grafana.com" [ref=e128] [cursor=pointer]:
+              - /url: https://grafana.com
+              - generic [ref=e129]: Gr
+              - generic [ref=e130]:
+                - generic [ref=e131]: Grafana
+                - generic [ref=e132]: grafana.com
+            - button "+ 添加置顶" [ref=e133]:
+              - generic [ref=e134]: +
+              - generic [ref=e135]: 添加置顶
+        - generic [ref=e136]:
+          - generic [ref=e137]:
+            - heading "全部工具" [level=2] [ref=e138]
+            - generic [ref=e139]: 27 个结果
+          - generic [ref=e140]:
+            - button "❖ 全部工具" [ref=e141]:
+              - generic [ref=e142]: ❖
+              - text: 全部工具
+            - button "</> 开发" [ref=e143]:
+              - generic [ref=e144]: </>
+              - text: 开发
+            - button "◈ 设计" [ref=e145]:
+              - generic [ref=e146]: ◈
+              - text: 设计
+            - button "✳ AI 与机器学习" [ref=e147]:
+              - generic [ref=e148]: ✳
+              - text: AI 与机器学习
+            - button "⚡ 效率" [ref=e149]:
+              - generic [ref=e150]: ⚡
+              - text: 效率
+            - button "▤ 数据分析" [ref=e151]:
+              - generic [ref=e152]: ▤
+              - text: 数据分析
+            - button "⬡ 基础设施" [ref=e153]:
+              - generic [ref=e154]: ⬡
+              - text: 基础设施
+            - button "⛨ 安全" [ref=e155]:
+              - generic [ref=e156]: ⛨
+              - text: 安全
+          - generic [ref=e157]:
+            - link "Cl Claude Anthropic 出品的高级 AI，擅长分析、编程、写作与复杂推理… AI 与机器学习 claude.ai" [ref=e158] [cursor=pointer]:
+              - /url: https://claude.ai
+              - generic [ref=e160]: Cl
+              - generic [ref=e161]: Claude
+              - paragraph [ref=e162]: Anthropic 出品的高级 AI，擅长分析、编程、写作与复杂推理…
+              - generic [ref=e163]:
+                - generic [ref=e164]: AI 与机器学习
+                - generic [ref=e165]: claude.ai
+            - link "GH 新 GitHub Copilot AI 结对编程助手，在编辑器中随手补全代码… AI 与机器学习 github.com/copilot" [ref=e166] [cursor=pointer]:
+              - /url: https://github.com/copilot
+              - generic [ref=e167]:
+                - generic [ref=e168]: GH
+                - generic [ref=e169]: 新
+              - generic [ref=e170]: GitHub Copilot
+              - paragraph [ref=e171]: AI 结对编程助手，在编辑器中随手补全代码…
+              - generic [ref=e172]:
+                - generic [ref=e173]: AI 与机器学习
+                - generic [ref=e174]: github.com/copilot
+            - link "Px Perplexity AI 驱动的搜索，直接给出答案并附带实时引用来源… AI 与机器学习 perplexity.ai" [ref=e175] [cursor=pointer]:
+              - /url: https://perplexity.ai
+              - generic [ref=e177]: Px
+              - generic [ref=e178]: Perplexity
+              - paragraph [ref=e179]: AI 驱动的搜索，直接给出答案并附带实时引用来源…
+              - generic [ref=e180]:
+                - generic [ref=e181]: AI 与机器学习
+                - generic [ref=e182]: perplexity.ai
+            - link "RW Runway ML 新一代 AI 创作套件，支持视频生成、局部重绘等… AI 与机器学习 runwayml.com" [ref=e183] [cursor=pointer]:
+              - /url: https://runwayml.com
+              - generic [ref=e185]: RW
+              - generic [ref=e186]: Runway ML
+              - paragraph [ref=e187]: 新一代 AI 创作套件，支持视频生成、局部重绘等…
+              - generic [ref=e188]:
+                - generic [ref=e189]: AI 与机器学习
+                - generic [ref=e190]: runwayml.com
+            - link "Re Replicate 通过简单 API 运行与微调开源 AI 模型，按量付费… AI 与机器学习 replicate.com" [ref=e191] [cursor=pointer]:
+              - /url: https://replicate.com
+              - generic [ref=e193]: Re
+              - generic [ref=e194]: Replicate
+              - paragraph [ref=e195]: 通过简单 API 运行与微调开源 AI 模型，按量付费…
+              - generic [ref=e196]:
+                - generic [ref=e197]: AI 与机器学习
+                - generic [ref=e198]: replicate.com
+            - link "Ve ★ Vercel 零配置部署 Web 项目，内置边缘函数与全球加速… 开发 vercel.com" [ref=e199] [cursor=pointer]:
+              - /url: https://vercel.com
+              - generic [ref=e200]:
+                - generic [ref=e201]: Ve
+                - generic [ref=e202]: ★
+              - generic [ref=e203]: Vercel
+              - paragraph [ref=e204]: 零配置部署 Web 项目，内置边缘函数与全球加速…
+              - generic [ref=e205]:
+                - generic [ref=e206]: 开发
+                - generic [ref=e207]: vercel.com
+            - link "GH GitHub 全球领先的版本控制与协作平台… 开发 github.com" [ref=e208] [cursor=pointer]:
+              - /url: https://github.com
+              - generic [ref=e210]: GH
+              - generic [ref=e211]: GitHub
+              - paragraph [ref=e212]: 全球领先的版本控制与协作平台…
+              - generic [ref=e213]:
+                - generic [ref=e214]: 开发
+                - generic [ref=e215]: github.com
+            - link "TW Tailwind CSS 实用优先的 CSS 框架，快速构建现代界面… 开发 tailwindcss.com" [ref=e216] [cursor=pointer]:
+              - /url: https://tailwindcss.com
+              - generic [ref=e218]: TW
+              - generic [ref=e219]: Tailwind CSS
+              - paragraph [ref=e220]: 实用优先的 CSS 框架，快速构建现代界面…
+              - generic [ref=e221]:
+                - generic [ref=e222]: 开发
+                - generic [ref=e223]: tailwindcss.com
+            - link "Rt Retool 极速搭建内部工具，拖拽式构建配合强大逻辑… 开发 retool.com" [ref=e224] [cursor=pointer]:
+              - /url: https://retool.com
+              - generic [ref=e226]: Rt
+              - generic [ref=e227]: Retool
+              - paragraph [ref=e228]: 极速搭建内部工具，拖拽式构建配合强大逻辑…
+              - generic [ref=e229]:
+                - generic [ref=e230]: 开发
+                - generic [ref=e231]: retool.com
+            - link "Sb 新 Supabase 开源的 Firebase 替代方案，集成 Postgres、鉴权、存储… 开发 supabase.com" [ref=e232] [cursor=pointer]:
+              - /url: https://supabase.com
+              - generic [ref=e233]:
+                - generic [ref=e234]: Sb
+                - generic [ref=e235]: 新
+              - generic [ref=e236]: Supabase
+              - paragraph [ref=e237]: 开源的 Firebase 替代方案，集成 Postgres、鉴权、存储…
+              - generic [ref=e238]:
+                - generic [ref=e239]: 开发
+                - generic [ref=e240]: supabase.com
+            - link "Bu Bun 一体化的高速 JavaScript 运行时、打包器与包管理器… 开发 bun.sh" [ref=e241] [cursor=pointer]:
+              - /url: https://bun.sh
+              - generic [ref=e243]: Bu
+              - generic [ref=e244]: Bun
+              - paragraph [ref=e245]: 一体化的高速 JavaScript 运行时、打包器与包管理器…
+              - generic [ref=e246]:
+                - generic [ref=e247]: 开发
+                - generic [ref=e248]: bun.sh
+            - link "Fi ★ Figma 协作式界面设计工具，支持原型、组件与设计系统… 设计 figma.com" [ref=e249] [cursor=pointer]:
+              - /url: https://figma.com
+              - generic [ref=e250]:
+                - generic [ref=e251]: Fi
+                - generic [ref=e252]: ★
+              - generic [ref=e253]: Figma
+              - paragraph [ref=e254]: 协作式界面设计工具，支持原型、组件与设计系统…
+              - generic [ref=e255]:
+                - generic [ref=e256]: 设计
+                - generic [ref=e257]: figma.com
+            - link "Fr Framer 无需代码，设计并发布带丰富动效的精美网站… 设计 framer.com" [ref=e258] [cursor=pointer]:
+              - /url: https://framer.com
+              - generic [ref=e260]: Fr
+              - generic [ref=e261]: Framer
+              - paragraph [ref=e262]: 无需代码，设计并发布带丰富动效的精美网站…
+              - generic [ref=e263]:
+                - generic [ref=e264]: 设计
+                - generic [ref=e265]: framer.com
+            - link "Sp Spline 在线协作创建并发布 3D 网页体验… 设计 spline.design" [ref=e266] [cursor=pointer]:
+              - /url: https://spline.design
+              - generic [ref=e268]: Sp
+              - generic [ref=e269]: Spline
+              - paragraph [ref=e270]: 在线协作创建并发布 3D 网页体验…
+              - generic [ref=e271]:
+                - generic [ref=e272]: 设计
+                - generic [ref=e273]: spline.design
+            - link "Mo Mobbin 海量移动与网页应用界面参考，节省 UI 与 UX 调研时间… 设计 mobbin.com" [ref=e274] [cursor=pointer]:
+              - /url: https://mobbin.com
+              - generic [ref=e276]: Mo
+              - generic [ref=e277]: Mobbin
+              - paragraph [ref=e278]: 海量移动与网页应用界面参考，节省 UI 与 UX 调研时间…
+              - generic [ref=e279]:
+                - generic [ref=e280]: 设计
+                - generic [ref=e281]: mobbin.com
+            - link "Li ★ Linear 为高效团队打造的问题追踪工具，简化研发流程… 效率 linear.app" [ref=e282] [cursor=pointer]:
+              - /url: https://linear.app
+              - generic [ref=e283]:
+                - generic [ref=e284]: Li
+                - generic [ref=e285]: ★
+              - generic [ref=e286]: Linear
+              - paragraph [ref=e287]: 为高效团队打造的问题追踪工具，简化研发流程…
+              - generic [ref=e288]:
+                - generic [ref=e289]: 效率
+                - generic [ref=e290]: linear.app
+            - link "No Notion 集笔记、知识库、任务与数据库于一体的团队工作空间… 效率 notion.so" [ref=e291] [cursor=pointer]:
+              - /url: https://notion.so
+              - generic [ref=e293]: "No"
+              - generic [ref=e294]: Notion
+              - paragraph [ref=e295]: 集笔记、知识库、任务与数据库于一体的团队工作空间…
+              - generic [ref=e296]:
+                - generic [ref=e297]: 效率
+                - generic [ref=e298]: notion.so
+            - link "Rc Raycast macOS 上的极速效率启动器，一处掌控所有工具… 效率 raycast.com" [ref=e299] [cursor=pointer]:
+              - /url: https://raycast.com
+              - generic [ref=e301]: Rc
+              - generic [ref=e302]: Raycast
+              - paragraph [ref=e303]: macOS 上的极速效率启动器，一处掌控所有工具…
+              - generic [ref=e304]:
+                - generic [ref=e305]: 效率
+                - generic [ref=e306]: raycast.com
+            - link "Lo Loom 录制并分享异步视频消息，用于演示、反馈与沟通… 效率 loom.com" [ref=e307] [cursor=pointer]:
+              - /url: https://loom.com
+              - generic [ref=e309]: Lo
+              - generic [ref=e310]: Loom
+              - paragraph [ref=e311]: 录制并分享异步视频消息，用于演示、反馈与沟通…
+              - generic [ref=e312]:
+                - generic [ref=e313]: 效率
+                - generic [ref=e314]: loom.com
+            - link "Gr ★ Grafana 开源可观测性平台，涵盖指标、日志与链路追踪… 数据分析 grafana.com" [ref=e315] [cursor=pointer]:
+              - /url: https://grafana.com
+              - generic [ref=e316]:
+                - generic [ref=e317]: Gr
+                - generic [ref=e318]: ★
+              - generic [ref=e319]: Grafana
+              - paragraph [ref=e320]: 开源可观测性平台，涵盖指标、日志与链路追踪…
+              - generic [ref=e321]:
+                - generic [ref=e322]: 数据分析
+                - generic [ref=e323]: grafana.com
+            - link "Dd Datadog 云端监控与安全平台，提供全栈可观测能力… 数据分析 datadoghq.com" [ref=e324] [cursor=pointer]:
+              - /url: https://datadoghq.com
+              - generic [ref=e326]: Dd
+              - generic [ref=e327]: Datadog
+              - paragraph [ref=e328]: 云端监控与安全平台，提供全栈可观测能力…
+              - generic [ref=e329]:
+                - generic [ref=e330]: 数据分析
+                - generic [ref=e331]: datadoghq.com
+            - link "Mb Metabase 简单易用的开源方案，在团队内共享数据与分析… 数据分析 metabase.com" [ref=e332] [cursor=pointer]:
+              - /url: https://metabase.com
+              - generic [ref=e334]: Mb
+              - generic [ref=e335]: Metabase
+              - paragraph [ref=e336]: 简单易用的开源方案，在团队内共享数据与分析…
+              - generic [ref=e337]:
+                - generic [ref=e338]: 数据分析
+                - generic [ref=e339]: metabase.com
+            - link "CF Cloudflare 覆盖安全、CDN、DNS 与零信任的全球网络… 基础设施 cloudflare.com" [ref=e340] [cursor=pointer]:
+              - /url: https://cloudflare.com
+              - generic [ref=e342]: CF
+              - generic [ref=e343]: Cloudflare
+              - paragraph [ref=e344]: 覆盖安全、CDN、DNS 与零信任的全球网络…
+              - generic [ref=e345]:
+                - generic [ref=e346]: 基础设施
+                - generic [ref=e347]: cloudflare.com
+            - link "AW AWS Console 管理你的 AWS 资源，涵盖计算、存储与网络… 基础设施 console.aws.amazon.com" [ref=e348] [cursor=pointer]:
+              - /url: https://console.aws.amazon.com
+              - generic [ref=e350]: AW
+              - generic [ref=e351]: AWS Console
+              - paragraph [ref=e352]: 管理你的 AWS 资源，涵盖计算、存储与网络…
+              - generic [ref=e353]:
+                - generic [ref=e354]: 基础设施
+                - generic [ref=e355]: console.aws.amazon.com
+            - link "PS PlanetScale 全球最先进的无服务器 MySQL 平台… 基础设施 planetscale.com" [ref=e356] [cursor=pointer]:
+              - /url: https://planetscale.com
+              - generic [ref=e358]: PS
+              - generic [ref=e359]: PlanetScale
+              - paragraph [ref=e360]: 全球最先进的无服务器 MySQL 平台…
+              - generic [ref=e361]:
+                - generic [ref=e362]: 基础设施
+                - generic [ref=e363]: planetscale.com
+            - link "1P 1Password 面向团队与企业的密码管理器与安全数字钱包… 安全 1password.com" [ref=e364] [cursor=pointer]:
+              - /url: https://1password.com
+              - generic [ref=e366]: 1P
+              - generic [ref=e367]: 1Password
+              - paragraph [ref=e368]: 面向团队与企业的密码管理器与安全数字钱包…
+              - generic [ref=e369]:
+                - generic [ref=e370]: 安全
+                - generic [ref=e371]: 1password.com
+            - link "Sk Snyk 开发者安全平台，帮助发现并修复代码中的漏洞… 安全 snyk.io" [ref=e372] [cursor=pointer]:
+              - /url: https://snyk.io
+              - generic [ref=e374]: Sk
+              - generic [ref=e375]: Snyk
+              - paragraph [ref=e376]: 开发者安全平台，帮助发现并修复代码中的漏洞…
+              - generic [ref=e377]:
+                - generic [ref=e378]: 安全
+                - generic [ref=e379]: snyk.io
+    - navigation [ref=e384]:
+      - button "⌂ 首页" [ref=e385]:
+        - generic [ref=e386]: ⌂
+        - text: 首页
+      - button "✦ 推荐" [ref=e387]:
+        - generic [ref=e388]: ✦
+        - text: 推荐
+      - button "❖ 工具库" [ref=e389]:
+        - generic [ref=e390]: ❖
+        - text: 工具库
+      - button "◍ 我的" [ref=e391]:
+        - generic [ref=e392]: ◍
+        - text: 我的

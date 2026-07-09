@@ -4,14 +4,6 @@ export interface NavItem {
   icon: string
 }
 
-export interface StatCard {
-  id: string
-  value: string
-  label: string
-  hint: string
-  icon: string
-}
-
 export interface Shortcut {
   key: string
   label: string
@@ -29,9 +21,10 @@ export interface Pick {
   iconColor: string
 }
 
-export interface PinnedSite {
+export interface Tool {
   id: string
   name: string
+  role: string
   domain: string
   short: string
   color: string
@@ -48,30 +41,22 @@ export interface Resource {
   id: string
   name: string
   short: string
-  desc: string
+  orgType: string
+  models: string
+  followers: string
+  tier?: 'Enterprise' | 'Team'
   category: string
-  categoryLabel: string
-  domain: string
   color: string
   bg: string
-  starred?: boolean
-  isNew?: boolean
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  { id: 'home', label: 'Home', icon: '⌂' },
-  { id: 'discover', label: 'Discover', icon: '◎' },
-  { id: 'favorites', label: 'Favorites', icon: '☆' },
-  { id: 'recent', label: 'Recent', icon: '◷' },
-  { id: 'collections', label: 'Collections', icon: '❏' },
-  { id: 'security', label: 'Security', icon: '⛨' },
-]
-
-export const STATS: StatCard[] = [
-  { id: 'resources', value: '27', label: 'Resources', hint: '+3 this week', icon: '⊕' },
-  { id: 'pinned', value: '6', label: 'Pinned', hint: 'Quick access', icon: '☆' },
-  { id: 'collections', value: '4', label: 'Collections', hint: '2 shared', icon: '❏' },
-  { id: 'recent', value: '12', label: 'Recent', hint: 'Last 7 days', icon: '◷' },
+  { id: 'home', label: '首页', icon: '⌂' },
+  { id: 'discover', label: '发现', icon: '◎' },
+  { id: 'favorites', label: '收藏', icon: '☆' },
+  { id: 'recent', label: '最近', icon: '◷' },
+  { id: 'collections', label: '收藏夹', icon: '❏' },
+  { id: 'security', label: '安全', icon: '⛨' },
 ]
 
 export const SHORTCUTS: Shortcut[] = [
@@ -84,57 +69,56 @@ export const SHORTCUTS: Shortcut[] = [
 ]
 
 export const PICKS: Pick[] = [
-  { id: 'p1', title: 'Ship faster with Vercel Edge Config', source: 'Vercel Blog', time: '1h ago', icon: '⚡', iconBg: '#eef2ff', iconColor: '#6366f1' },
-  { id: 'p2', title: 'Claude 3.5: What engineers need to know', source: 'Anthropic', time: '3h ago', icon: '✳', iconBg: '#f5f3ff', iconColor: '#8b5cf6' },
-  { id: 'p3', title: 'Design systems that scale with Figma Variables', source: 'Figma', time: '5h ago', icon: '❖', iconBg: '#fff1ed', iconColor: '#f24e1e' },
-  { id: 'p4', title: 'Zero-downtime Postgres migrations at scale', source: 'PlanetScale', time: '8h ago', icon: '⬢', iconBg: '#ecfdf5', iconColor: '#10b981' },
+  { id: 'p1', title: '用 Vercel Edge Config 更快发布', source: 'Vercel 博客', time: '1 小时前', icon: '⚡', iconBg: '#eef2ff', iconColor: '#6366f1' },
+  { id: 'p2', title: 'Claude 3.5：工程师需要了解的要点', source: 'Anthropic', time: '3 小时前', icon: '✳', iconBg: '#f5f3ff', iconColor: '#8b5cf6' },
+  { id: 'p3', title: '用 Figma Variables 打造可扩展的设计系统', source: 'Figma', time: '5 小时前', icon: '❖', iconBg: '#fff1ed', iconColor: '#f24e1e' },
+  { id: 'p4', title: '大规模零停机 Postgres 迁移实践', source: 'PlanetScale', time: '8 小时前', icon: '⬢', iconBg: '#ecfdf5', iconColor: '#10b981' },
 ]
 
-export const PINNED: PinnedSite[] = [
-  { id: 'claude', name: 'Claude', domain: 'claude.ai', short: 'Cl', color: '#8b5cf6', bg: '#f5f3ff' },
-  { id: 'vercel', name: 'Vercel', domain: 'vercel.com', short: 'Ve', color: '#1f2328', bg: '#f3f4f6' },
-  { id: 'figma', name: 'Figma', domain: 'figma.com', short: 'Fi', color: '#f24e1e', bg: '#fff1ed' },
-  { id: 'linear', name: 'Linear', domain: 'linear.app', short: 'Li', color: '#5e6ad2', bg: '#eef0ff' },
-  { id: 'grafana', name: 'Grafana', domain: 'grafana.com', short: 'Gr', color: '#f46800', bg: '#fff4ec' },
+// 常用工具（横向卡片：图标 + 名称 + 用途 + 域名）
+export const TOOLS: Tool[] = [
+  { id: 'claude', name: 'Claude', role: 'AI 助手', domain: 'claude.ai', short: 'Cl', color: '#8b5cf6', bg: '#f5f3ff' },
+  { id: 'vercel', name: 'Vercel', role: '部署平台', domain: 'vercel.com', short: 'Ve', color: '#1f2328', bg: '#f3f4f6' },
+  { id: 'figma', name: 'Figma', role: '设计工具', domain: 'figma.com', short: 'Fi', color: '#f24e1e', bg: '#fff1ed' },
+  { id: 'linear', name: 'Linear', role: '项目管理', domain: 'linear.app', short: 'Li', color: '#5e6ad2', bg: '#eef0ff' },
+  { id: 'grafana', name: 'Grafana', role: '数据可视化', domain: 'grafana.com', short: 'Gr', color: '#f46800', bg: '#fff4ec' },
 ]
 
 export const RESOURCE_CATEGORIES: ResourceCategory[] = [
-  { id: 'all', label: 'All Resources', icon: '❖' },
-  { id: 'development', label: 'Development', icon: '</>' },
-  { id: 'design', label: 'Design', icon: '◈' },
-  { id: 'ai', label: 'AI & ML', icon: '✳' },
-  { id: 'productivity', label: 'Productivity', icon: '⚡' },
-  { id: 'data', label: 'Data & Analytics', icon: '▤' },
-  { id: 'infrastructure', label: 'Infrastructure', icon: '⬡' },
-  { id: 'security', label: 'Security', icon: '⛨' },
+  { id: 'all', label: '全部资源', icon: '❖' },
+  { id: 'development', label: '开发工具', icon: '</>' },
+  { id: 'design', label: '设计资源', icon: '◈' },
+  { id: 'ai', label: 'AI 与机器学习', icon: '✳' },
+  { id: 'productivity', label: '生产力工具', icon: '⚡' },
+  { id: 'data', label: '数据与分析', icon: '▤' },
+  { id: 'infrastructure', label: '基础设施', icon: '⬡' },
+  { id: 'security', label: '安全工具', icon: '⛨' },
 ]
 
+// 资源中心（机构目录卡片：logo + 名称 + 徽章 + 机构类型 · 模型数 · 关注者）
 export const RESOURCES: Resource[] = [
-  { id: 'claude', name: 'Claude', short: 'Cl', desc: "Anthropic's advanced AI for analysis, coding, writing, and nuanced...", category: 'ai', categoryLabel: 'AI & ML', domain: 'claude.ai', color: '#8b5cf6', bg: '#f5f3ff' },
-  { id: 'copilot', name: 'GitHub Copilot', short: 'GH', desc: 'AI pair programmer that suggests code completions across your editor...', category: 'ai', categoryLabel: 'AI & ML', domain: 'github.com/copilot', color: '#1f2328', bg: '#f3f4f6', isNew: true },
-  { id: 'perplexity', name: 'Perplexity', short: 'Px', desc: 'AI-powered search that delivers direct answers with live citations from the...', category: 'ai', categoryLabel: 'AI & ML', domain: 'perplexity.ai', color: '#20808d', bg: '#e8f6f7' },
-  { id: 'runway', name: 'Runway ML', short: 'RW', desc: 'Next-generation AI creative suite for video generation, inpainting, and...', category: 'ai', categoryLabel: 'AI & ML', domain: 'runwayml.com', color: '#1f2328', bg: '#f3f4f6' },
-  { id: 'replicate', name: 'Replicate', short: 'Re', desc: 'Run and fine-tune open-source AI models via a simple API. Pay only fo...', category: 'ai', categoryLabel: 'AI & ML', domain: 'replicate.com', color: '#1f2328', bg: '#f3f4f6' },
-  { id: 'vercel', name: 'Vercel', short: 'Ve', desc: 'Deploy web projects with zero configuration. Edge functions,...', category: 'development', categoryLabel: 'Development', domain: 'vercel.com', color: '#1f2328', bg: '#f3f4f6', starred: true },
-  { id: 'github', name: 'GitHub', short: 'GH', desc: "The world's leading platform for version control, collaboration, and...", category: 'development', categoryLabel: 'Development', domain: 'github.com', color: '#1f2328', bg: '#f3f4f6' },
-  { id: 'tailwind', name: 'Tailwind CSS', short: 'TW', desc: 'Utility-first CSS framework for rapidly building modern interfaces in any...', category: 'development', categoryLabel: 'Development', domain: 'tailwindcss.com', color: '#06b6d4', bg: '#ecfeff' },
-  { id: 'retool', name: 'Retool', short: 'Rt', desc: 'Build internal tools remarkably fast. Drag-and-drop builder with powerful...', category: 'development', categoryLabel: 'Development', domain: 'retool.com', color: '#3d3d3d', bg: '#f3f4f6' },
-  { id: 'supabase', name: 'Supabase', short: 'Sb', desc: 'Open source Firebase alternative with Postgres, auth, storage, and edge...', category: 'development', categoryLabel: 'Development', domain: 'supabase.com', color: '#3ecf8e', bg: '#ecfdf5', isNew: true },
-  { id: 'bun', name: 'Bun', short: 'Bu', desc: 'A fast all-in-one JavaScript runtime, bundler, transpiler, and package...', category: 'development', categoryLabel: 'Development', domain: 'bun.sh', color: '#f472b6', bg: '#fdf2f8' },
-  { id: 'figma', name: 'Figma', short: 'Fi', desc: 'Collaborative interface design tool for prototyping, components, and desig...', category: 'design', categoryLabel: 'Design', domain: 'figma.com', color: '#f24e1e', bg: '#fff1ed', starred: true },
-  { id: 'framer', name: 'Framer', short: 'Fr', desc: 'Design and publish stunning sites with rich animations and zero code...', category: 'design', categoryLabel: 'Design', domain: 'framer.com', color: '#1f2328', bg: '#f3f4f6' },
-  { id: 'spline', name: 'Spline', short: 'Sp', desc: 'Create and publish 3D web experiences collaboratively, right in...', category: 'design', categoryLabel: 'Design', domain: 'spline.design', color: '#e5484d', bg: '#fef2f2' },
-  { id: 'mobbin', name: 'Mobbin', short: 'Mo', desc: "Save time on UI & UX research with world's largest mobile and web app...", category: 'design', categoryLabel: 'Design', domain: 'mobbin.com', color: '#6366f1', bg: '#eef2ff' },
-  { id: 'linear', name: 'Linear', short: 'Li', desc: 'The issue tracker built for high-performance teams. Streamline...', category: 'productivity', categoryLabel: 'Productivity', domain: 'linear.app', color: '#5e6ad2', bg: '#eef0ff', starred: true },
-  { id: 'notion', name: 'Notion', short: 'No', desc: "All-in-one workspace for notes, wikis, tasks, and databases. Your team's...", category: 'productivity', categoryLabel: 'Productivity', domain: 'notion.so', color: '#1f2328', bg: '#f3f4f6' },
-  { id: 'raycast', name: 'Raycast', short: 'Rc', desc: 'Blazingly fast productivity launcher for macOS. Control all your tools in...', category: 'productivity', categoryLabel: 'Productivity', domain: 'raycast.com', color: '#ff6363', bg: '#fff1f1' },
-  { id: 'loom', name: 'Loom', short: 'Lo', desc: 'Record and share async video messages for demos, feedback, and...', category: 'productivity', categoryLabel: 'Productivity', domain: 'loom.com', color: '#625df5', bg: '#eef0ff' },
-  { id: 'grafana', name: 'Grafana', short: 'Gr', desc: 'Open-source observability platform for metrics, logs, traces, and...', category: 'data', categoryLabel: 'Data & Analytics', domain: 'grafana.com', color: '#f46800', bg: '#fff4ec', starred: true },
-  { id: 'datadog', name: 'Datadog', short: 'Dd', desc: 'Cloud monitoring and security platform for full-stack observability...', category: 'data', categoryLabel: 'Data & Analytics', domain: 'datadoghq.com', color: '#632ca6', bg: '#f4effb' },
-  { id: 'metabase', name: 'Metabase', short: 'Mb', desc: 'The easy, open source way to share data and analytics across your...', category: 'data', categoryLabel: 'Data & Analytics', domain: 'metabase.com', color: '#509ee3', bg: '#eef6fd' },
-  { id: 'cloudflare', name: 'Cloudflare', short: 'CF', desc: 'Global network for security, CDN, DNS, and Zero Trust solutions at any...', category: 'infrastructure', categoryLabel: 'Infrastructure', domain: 'cloudflare.com', color: '#f38020', bg: '#fff5eb' },
-  { id: 'aws', name: 'AWS Console', short: 'AW', desc: 'Manage your Amazon Web Services resources, compute, storage, and...', category: 'infrastructure', categoryLabel: 'Infrastructure', domain: 'console.aws.amazon.com', color: '#ff9900', bg: '#fff7e6' },
-  { id: 'planetscale', name: 'PlanetScale', short: 'PS', desc: "The world's most advanced serverless MySQL platform, built for...", category: 'infrastructure', categoryLabel: 'Infrastructure', domain: 'planetscale.com', color: '#1f2328', bg: '#f3f4f6' },
-  { id: '1password', name: '1Password', short: '1P', desc: 'Password manager and secure digital wallet for teams and enterprise...', category: 'security', categoryLabel: 'Security', domain: '1password.com', color: '#1a8cff', bg: '#e9f4ff' },
-  { id: 'snyk', name: 'Snyk', short: 'Sk', desc: 'Developer security platform that helps find and fix vulnerabilities in code an...', category: 'security', categoryLabel: 'Security', domain: 'snyk.io', color: '#4c4a73', bg: '#eeeef5' },
+  { id: 'ai2', name: 'Ai2', short: 'A2', orgType: '非营利组织', models: '968 个模型', followers: '6.24k 关注者', tier: 'Enterprise', category: 'ai', color: '#ec4899', bg: '#1a1a2e' },
+  { id: 'meta', name: 'AI at Meta', short: 'M', orgType: '公司', models: '2.35k 个模型', followers: '13.6k 关注者', tier: 'Enterprise', category: 'ai', color: '#0866ff', bg: '#e7f0ff' },
+  { id: 'amazon', name: 'Amazon', short: 'a', orgType: '公司', models: '36 个模型', followers: '4.14k 关注者', tier: 'Enterprise', category: 'infrastructure', color: '#ff9900', bg: '#fff7e6' },
+  { id: 'google', name: 'Google', short: 'G', orgType: '公司', models: '1.13k 个模型', followers: '61.1k 关注者', tier: 'Enterprise', category: 'ai', color: '#4285f4', bg: '#eaf1fe' },
+  { id: 'intel', name: 'Intel', short: 'in', orgType: '公司', models: '255 个模型', followers: '4.07k 关注者', tier: 'Enterprise', category: 'infrastructure', color: '#0068b5', bg: '#e6f2fb' },
+  { id: 'microsoft', name: 'Microsoft', short: 'MS', orgType: '公司', models: '523 个模型', followers: '20.7k 关注者', tier: 'Enterprise', category: 'ai', color: '#00a4ef', bg: '#eaf6fe' },
+  { id: 'grammarly', name: 'Grammarly', short: 'Gr', orgType: '公司', models: '11 个模型', followers: '226 关注者', tier: 'Team', category: 'productivity', color: '#15c39a', bg: '#e7f9f3' },
+  { id: 'writer', name: 'Writer', short: 'W', orgType: '公司', models: '38 个模型', followers: '397 关注者', tier: 'Enterprise', category: 'productivity', color: '#1f2328', bg: '#f3f4f6' },
+  { id: 'anthropic', name: 'Anthropic', short: 'An', orgType: '公司', models: '42 个模型', followers: '18.9k 关注者', tier: 'Enterprise', category: 'ai', color: '#d97757', bg: '#fbf0ec' },
+  { id: 'openai', name: 'OpenAI', short: 'Oa', orgType: '公司', models: '29 个模型', followers: '45.3k 关注者', tier: 'Enterprise', category: 'ai', color: '#10a37f', bg: '#e7f7f2' },
+  { id: 'mistral', name: 'Mistral AI', short: 'Mi', orgType: '公司', models: '88 个模型', followers: '12.4k 关注者', tier: 'Enterprise', category: 'ai', color: '#fa520f', bg: '#fff0e9' },
+  { id: 'huggingface', name: 'Hugging Face', short: 'HF', orgType: '公司', models: '1.9k 个模型', followers: '88.2k 关注者', tier: 'Enterprise', category: 'development', color: '#ffb000', bg: '#fff6e0' },
+  { id: 'github', name: 'GitHub', short: 'GH', orgType: '公司', models: '19 个模型', followers: '8.3k 关注者', tier: 'Enterprise', category: 'development', color: '#1f2328', bg: '#f3f4f6' },
+  { id: 'databricks', name: 'Databricks', short: 'Db', orgType: '公司', models: '143 个模型', followers: '15.4k 关注者', tier: 'Enterprise', category: 'data', color: '#ff3621', bg: '#ffece9' },
+  { id: 'nvidia', name: 'NVIDIA', short: 'nv', orgType: '公司', models: '476 个模型', followers: '32.1k 关注者', tier: 'Enterprise', category: 'infrastructure', color: '#76b900', bg: '#f1f8e3' },
+  { id: 'salesforce', name: 'Salesforce', short: 'Sf', orgType: '公司', models: '91 个模型', followers: '5.6k 关注者', tier: 'Enterprise', category: 'data', color: '#00a1e0', bg: '#e6f5fc' },
+  { id: 'cohere', name: 'Cohere', short: 'Co', orgType: '公司', models: '34 个模型', followers: '7.1k 关注者', tier: 'Team', category: 'ai', color: '#39594d', bg: '#eaefed' },
+  { id: 'ibm', name: 'IBM', short: 'IB', orgType: '公司', models: '388 个模型', followers: '11.2k 关注者', tier: 'Enterprise', category: 'security', color: '#0f62fe', bg: '#e8effe' },
+  { id: 'cloudflare', name: 'Cloudflare', short: 'CF', orgType: '公司', models: '15 个模型', followers: '4.9k 关注者', tier: 'Enterprise', category: 'security', color: '#f38020', bg: '#fff5eb' },
+  { id: 'adobe', name: 'Adobe', short: 'Ad', orgType: '公司', models: '52 个模型', followers: '6.7k 关注者', tier: 'Enterprise', category: 'design', color: '#fa0f00', bg: '#ffeceb' },
+  { id: 'canva', name: 'Canva', short: 'Ca', orgType: '公司', models: '5 个模型', followers: '1.1k 关注者', tier: 'Team', category: 'design', color: '#00c4cc', bg: '#e3fafb' },
+  { id: 'notion', name: 'Notion', short: 'No', orgType: '公司', models: '7 个模型', followers: '512 关注者', tier: 'Team', category: 'productivity', color: '#1f2328', bg: '#f3f4f6' },
+  { id: 'bytedance', name: 'ByteDance', short: 'Bd', orgType: '公司', models: '210 个模型', followers: '9.2k 关注者', tier: 'Enterprise', category: 'ai', color: '#325ab4', bg: '#eaeff8' },
+  { id: 'databend', name: 'Together AI', short: 'To', orgType: '公司', models: '156 个模型', followers: '6.8k 关注者', tier: 'Team', category: 'infrastructure', color: '#1f2328', bg: '#f3f4f6' },
 ]
