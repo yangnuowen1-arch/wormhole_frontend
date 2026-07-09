@@ -5,6 +5,7 @@ import {
   type ElementType,
   type ReactNode,
 } from 'react'
+import { gsap } from 'gsap'
 
 interface TextTypeProps {
   text: string | string[]
@@ -19,6 +20,7 @@ interface TextTypeProps {
   hideCursorWhileTyping?: boolean
   cursorCharacter?: string | ReactNode
   cursorClassName?: string
+  cursorBlinkDuration?: number
   textColors?: string[]
   variableSpeed?: { min: number; max: number }
   onSentenceComplete?: (sentence: string, index: number) => void
@@ -40,6 +42,7 @@ function TextType({
   hideCursorWhileTyping = false,
   cursorCharacter = '|',
   cursorClassName = '',
+  cursorBlinkDuration = 0.5,
   textColors = [],
   variableSpeed,
   onSentenceComplete,
@@ -52,6 +55,7 @@ function TextType({
   const [isDeleting, setIsDeleting] = useState(false)
   const [currentTextIndex, setCurrentTextIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(!startOnVisible)
+  const cursorRef = useRef<HTMLSpanElement>(null)
   const containerRef = useRef<HTMLElement>(null)
 
   const textArray = Array.isArray(text) ? text : [text]
@@ -84,6 +88,20 @@ function TextType({
     observer.observe(containerRef.current)
     return () => observer.disconnect()
   }, [startOnVisible])
+
+  // 用 gsap 让光标平滑淡入淡出（power2.inOut + yoyo），而非 CSS 硬切换
+  useEffect(() => {
+    if (showCursor && cursorRef.current) {
+      gsap.set(cursorRef.current, { opacity: 1 })
+      gsap.to(cursorRef.current, {
+        opacity: 0,
+        duration: cursorBlinkDuration,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power2.inOut',
+      })
+    }
+  }, [showCursor, cursorBlinkDuration])
 
   useEffect(() => {
     if (!isVisible) return
@@ -166,8 +184,9 @@ function TextType({
       </span>
       {showCursor && (
         <span
-          className={`ml-1 inline-block opacity-100 ${
-            shouldHideCursor ? 'hidden' : 'animate-text-type-blink'
+          ref={cursorRef}
+          className={`ml-1 inline-block ${
+            shouldHideCursor ? 'hidden' : ''
           } ${cursorClassName}`.trim()}
         >
           {cursorCharacter}

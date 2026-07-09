@@ -40,10 +40,12 @@ function Login() {
           <TextType
             as='h1'
             className='md:max-w-[920px] text-xl text-center  md:text-3xl font-semibold tracking-normal text-white drop-shadow-[0_0_18px_rgba(34,211,238,0.45)] sm:text-4xl md:text-5xl'
-            text='科技文化融合 创造世界光色之美'
+            text={['科技文化融合 创造世界光色之美']}
             typingSpeed={120}
+            deletingSpeed={60}
             initialDelay={300}
             pauseDuration={2000}
+            loop
             showCursor
           />
         ) : (
