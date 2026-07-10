@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import PrismaticBurst from '../../components/PrismaticBurst'
 import TextType from '../../components/TextType'
 import SpotlightCard from '../../components/SpotlightCard'
+import { API_BASE_URL } from '../../api/request'
 
 const burstColors = ['#06B6D4', '#3B82F6', '#10B981']
 
@@ -9,6 +11,11 @@ const burstOffset = { x: 0, y: 0 }
 
 function Login() {
   const [open, setOpen] = useState(false)
+  const [searchParams] = useSearchParams()
+  const returnTo = useMemo(
+    () => normalizeReturnTo(searchParams.get('redirect')),
+    [searchParams],
+  )
 
   return (
     <section className='relative isolate min-h-screen overflow-hidden bg-black text-white'>
@@ -94,7 +101,7 @@ function Login() {
 
               <div
                 className='flex flex-col gap-3 p-5 sm:gap-3.5 sm:p-6'
-                onClick={handleSSOLogin}
+                onClick={() => handleSSOLogin(returnTo)}
               >
                 <button
                   type='button'
@@ -126,9 +133,17 @@ function Login() {
   )
 }
 
-function handleSSOLogin() {
-  // Redirect to the SSO login page
-  window.location.href = '/users'
+function normalizeReturnTo(value: string | null) {
+  if (!value || !value.startsWith('/') || value.startsWith('//')) {
+    return '/users'
+  }
+
+  return value
+}
+
+function handleSSOLogin(returnTo: string) {
+  window.location.href =
+    `${API_BASE_URL}/auth/sso/login?return_to=${encodeURIComponent(returnTo)}`
 }
 
 export default Login

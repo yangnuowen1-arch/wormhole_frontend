@@ -1,44 +1,6 @@
 import { useMemo, useState } from 'react'
 import { RESOURCE_CATEGORIES, RESOURCES, type Resource } from '../data'
 
-function ResourceCard({ r }: { r: Resource }) {
-  return (
-    <a
-      href='#'
-      className='flex items-center gap-3 rounded-xl border border-[#ececf0] bg-white p-3.5 no-underline transition-all hover:-translate-y-0.5 hover:shadow-md sm:p-4'
-    >
-      <span
-        className='flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-[0.9rem] font-bold sm:h-12 sm:w-12'
-        style={{ backgroundColor: r.bg, color: r.color }}
-      >
-        {r.short}
-      </span>
-
-      <div className='min-w-0 flex-1'>
-        <div className='flex items-center gap-1.5'>
-          <span className='truncate text-[0.88rem] font-semibold text-[#1f2328] sm:text-[0.92rem]'>
-            {r.name}
-          </span>
-          {r.tier && (
-            <span
-              className={`shrink-0 rounded px-1.5 py-0.5 text-[0.58rem] font-semibold ${
-                r.tier === 'Enterprise'
-                  ? 'bg-[#f0efff] text-[#6366f1]'
-                  : 'bg-[#ecfdf5] text-[#10b981]'
-              }`}
-            >
-              {r.tier}
-            </span>
-          )}
-        </div>
-        <div className='mt-1 truncate text-[0.7rem] text-[#9096a2] sm:text-[0.72rem]'>
-          {r.orgType} · {r.models} · {r.followers}
-        </div>
-      </div>
-    </a>
-  )
-}
-
 export function ResourceHub() {
   const [active, setActive] = useState('all')
 
@@ -46,47 +8,97 @@ export function ResourceHub() {
     () =>
       active === 'all'
         ? RESOURCES
-        : RESOURCES.filter((r) => r.category === active),
-    [active]
+        : RESOURCES.filter((resource) => resource.category === active),
+    [active],
   )
 
   return (
-    <section>
-      <div className='mb-3 flex items-center justify-between sm:mb-4'>
-        <h2 className='text-[0.95rem] font-bold text-[#1f2328] sm:text-[1.05rem]'>
-          资源中心
-        </h2>
-        <span className='text-[0.72rem] text-[#9096a2] sm:text-[0.78rem]'>
-          {filtered.length} 个结果
-        </span>
+    <section className='rounded-2xl border border-slate-100 bg-white p-5 shadow-sm sm:p-6'>
+      <div className='mb-5 flex flex-col justify-between gap-4 sm:mb-6 sm:flex-row sm:items-center'>
+        <div className='flex items-center gap-2'>
+          <h3 className='text-sm font-bold text-slate-900 sm:text-base'>
+            资源中心
+          </h3>
+          <span className='rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-600'>
+            共 {RESOURCES.length} 个模型
+          </span>
+        </div>
+
+        <div className='no-scrollbar flex gap-1 overflow-x-auto rounded-xl bg-slate-100/80 p-1 text-xs font-semibold sm:text-sm'>
+          {RESOURCE_CATEGORIES.slice(0, 4).map((category) => {
+            const isActive = category.id === active
+
+            return (
+              <button
+                key={category.id}
+                type='button'
+                onClick={() => setActive(category.id)}
+                className={`shrink-0 rounded-lg px-3 py-1.5 font-semibold transition-all ${
+                  isActive
+                    ? 'bg-white text-purple-700 shadow-sm'
+                    : 'text-slate-600 hover:text-slate-950'
+                }`}
+              >
+                {category.label.replace('资源', '')}
+              </button>
+            )
+          })}
+        </div>
       </div>
 
-      <div className='mb-4 flex flex-wrap gap-1.5 sm:mb-5 sm:gap-2'>
-        {RESOURCE_CATEGORIES.map((c) => (
-          <button
-            key={c.id}
-            type='button'
-            onClick={() => setActive(c.id)}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[0.78rem] font-medium transition-colors sm:px-3.5 sm:text-[0.82rem] ${
-              c.id === active
-                ? 'bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] text-white'
-                : 'border border-[#ececf0] bg-white text-[#5b6170] hover:bg-[#f6f7f9]'
-            }`}
-          >
-            <span>{c.icon}</span>
-            {c.label}
-          </button>
-        ))}
-      </div>
-
-      <div className='grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4'>
-        {filtered.map((r) => (
+      <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
+        {filtered.slice(0, 8).map((resource) => (
           <ResourceCard
-            key={r.id}
-            r={r}
+            key={resource.id}
+            resource={resource}
           />
         ))}
       </div>
     </section>
+  )
+}
+
+function ResourceCard({ resource }: { resource: Resource }) {
+  return (
+    <a
+      href='#'
+      className='cursor-pointer rounded-xl border border-slate-100 bg-slate-50/30 p-4 no-underline transition-all duration-300 hover:border-purple-100 hover:bg-white hover:shadow-md'
+    >
+      <div className='flex items-start justify-between gap-3'>
+        <div className='flex min-w-0 items-center gap-3'>
+          <span
+            className='flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-sm font-bold'
+            style={{ backgroundColor: resource.bg, color: resource.color }}
+          >
+            {resource.short}
+          </span>
+          <span className='min-w-0'>
+            <span className='block truncate text-sm font-bold text-slate-800'>
+              {resource.name}
+            </span>
+            <span className='mt-0.5 block text-[11px] font-semibold text-slate-400'>
+              模型数: {resource.models.replace(' 个模型', '')} | 关注度:{' '}
+              {resource.followers.replace(' 关注者', '')}
+            </span>
+          </span>
+        </div>
+
+        {resource.tier && (
+          <span
+            className={`shrink-0 rounded-md px-2 py-0.5 text-[10px] font-extrabold ${
+              resource.tier === 'Enterprise'
+                ? 'bg-purple-50 text-purple-700'
+                : 'bg-emerald-50 text-emerald-700'
+            }`}
+          >
+            {resource.tier}
+          </span>
+        )}
+      </div>
+
+      <p className='mt-3 truncate text-xs font-semibold text-slate-500'>
+        {resource.orgType} · {resource.category} · 企业资源与模型生态入口。
+      </p>
+    </a>
   )
 }

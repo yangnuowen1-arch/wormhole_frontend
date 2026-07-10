@@ -2,51 +2,61 @@ import { TOOLS } from '../data'
 
 export function ToolsRow() {
   return (
-    <section>
-      <div className='mb-3 flex items-center justify-between'>
-        <h2 className='flex items-center gap-2 text-[0.95rem] font-bold text-[#1f2328] sm:text-[1rem]'>
-          <span className='text-[#f59e0b]'>★</span> 常用工具
-        </h2>
+    <section className='rounded-2xl border border-slate-100 bg-white p-5 shadow-sm sm:p-6'>
+      <div className='mb-4 flex items-center justify-between sm:mb-5'>
+        <h3 className='flex items-center gap-2 text-sm font-bold text-slate-900 sm:text-base'>
+          <span className='text-amber-400'>★</span>
+          <span>常用工具</span>
+        </h3>
         <button
           type='button'
-          className='text-[0.78rem] font-medium text-[#6366f1] sm:text-[0.82rem]'
+          className='text-sm font-bold text-purple-600 hover:text-purple-700 sm:text-sm'
         >
-          管理 ⌄
+          管理列表
         </button>
       </div>
 
-      <div className='grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6'>
-        {TOOLS.map((t) => (
+      <div className='grid grid-cols-2 gap-3 sm:grid-cols-4'>
+        {TOOLS.slice(0, 3).map((tool) => (
           <a
-            key={t.id}
-            href={`https://${t.domain}`}
+            key={tool.id}
+            href={`https://${tool.domain}`}
             target='_blank'
             rel='noreferrer'
-            className='flex items-center gap-3 rounded-xl border border-[#ececf0] bg-white p-3 no-underline transition-all hover:-translate-y-0.5 hover:shadow-md sm:rounded-2xl'
+            className='group flex cursor-pointer items-center gap-2.5 rounded-xl border border-slate-100 bg-slate-50/50 p-3 no-underline transition-all duration-300 hover:border-purple-100 hover:bg-white hover:shadow-md hover:shadow-purple-50'
           >
             <span
-              className='flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-[0.85rem] font-bold'
-              style={{ backgroundColor: t.bg, color: t.color }}
+              className='flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-sm font-bold'
+              style={{ backgroundColor: tool.bg, color: tool.color }}
             >
-              {t.short}
+              {tool.short}
             </span>
-            <div className='min-w-0'>
-              <div className='truncate text-[0.85rem] font-semibold text-[#1f2328]'>
-                {t.name}
-              </div>
-              <div className='truncate text-[0.7rem] text-[#9096a2]'>
-                {t.role}
-              </div>
-            </div>
+            <span className='min-w-0'>
+              <span className='block truncate text-sm font-bold text-slate-800 transition-colors group-hover:text-purple-600'>
+                {tool.name}
+              </span>
+              <span className='block truncate text-[11px] font-semibold text-slate-400 sm:text-xs'>
+                {tool.role}
+              </span>
+            </span>
           </a>
         ))}
 
         <button
           type='button'
-          className='flex items-center justify-center gap-2 rounded-xl border border-dashed border-[#d5d8de] p-3 text-[0.8rem] text-[#9096a2] hover:bg-white sm:rounded-2xl'
+          className='group flex cursor-pointer items-center gap-2.5 rounded-xl border border-dashed border-slate-200 bg-white p-3 transition-all duration-300 hover:border-purple-300'
         >
-          <span className='text-lg leading-none'>+</span>
-          添加工具
+          <span className='flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-sm font-bold text-slate-500'>
+            +
+          </span>
+          <span className='min-w-0 text-left'>
+            <span className='block truncate text-sm font-bold text-slate-500'>
+              添加工具
+            </span>
+            <span className='block truncate text-[11px] font-semibold text-slate-400 sm:text-xs'>
+              自定义面板
+            </span>
+          </span>
         </button>
       </div>
     </section>

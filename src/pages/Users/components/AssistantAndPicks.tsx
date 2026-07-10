@@ -2,70 +2,115 @@ import { PICKS } from '../data'
 
 export function AssistantAndPicks() {
   return (
-    <div className='grid grid-cols-1 gap-3 sm:gap-4 lg:grid-cols-2'>
-      <div className='relative flex flex-col justify-between overflow-hidden rounded-xl bg-gradient-to-br from-[#7c3aed] to-[#4f2bd6] p-6 text-white sm:rounded-2xl sm:p-7'>
-        <span className='absolute right-4 top-4 rounded-full bg-white/15 px-2 py-0.5 text-[0.65rem] font-medium sm:right-5 sm:top-5 sm:px-2.5 sm:py-1 sm:text-[0.68rem]'>
-          ● 在线
-        </span>
-        <span className='flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 text-lg sm:h-11 sm:w-11 sm:text-xl'>
-          ✦
-        </span>
-        <div className='mt-6 sm:mt-8'>
-          <h3 className='text-[1.2rem] font-bold sm:text-[1.35rem]'>AI 助手</h3>
-          <p className='mt-1.5 max-w-sm text-[0.82rem] text-white/80 sm:mt-2 sm:text-[0.88rem]'>
-            查找工具、对比资源、生成报告，为你的工作流量身推荐。
-          </p>
-          <button
-            type='button'
-            className='mt-4 text-[0.85rem] font-semibold text-white sm:mt-5 sm:text-[0.9rem]'
-          >
-            打开助手 →
-          </button>
-        </div>
-      </div>
+    <div className='space-y-5 sm:space-y-6'>
+      <AssistantPanel />
+      <TodayRecommend />
+    </div>
+  )
+}
 
-      <div className='rounded-xl border border-[#ececf0] bg-white p-4 sm:rounded-2xl sm:p-5'>
+function AssistantPanel() {
+  return (
+    <section className='group relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-950 via-purple-900 to-purple-800 p-5 text-white shadow-xl shadow-purple-950/10 sm:p-6'>
+      <div className='absolute -bottom-10 -right-10 h-44 w-44 rounded-full bg-purple-600/30 blur-3xl transition-transform duration-700 group-hover:scale-125' />
+
+      <div className='relative z-10 flex h-full flex-col justify-between space-y-4'>
         <div className='flex items-center justify-between'>
-          <div className='flex items-center gap-2 text-[0.9rem] font-bold text-[#1f2328] sm:text-[0.95rem]'>
-            <span className='text-[#6366f1]'>📈</span> 今日推荐
-            <span className='rounded-full bg-[#f0efff] px-1.5 py-0.5 text-[0.68rem] font-semibold text-[#6366f1] sm:px-2 sm:text-[0.7rem]'>
-              4
+          <div className='flex items-center gap-2.5'>
+            <span className='flex h-8 w-8 items-center justify-center rounded-lg bg-white/10 backdrop-blur-md'>
+              <SparklesIcon className='h-4 w-4 text-purple-300' />
+            </span>
+            <span className='text-sm font-bold tracking-wide sm:text-sm'>
+              AI 助手控制台
             </span>
           </div>
+          <span className='rounded-full border border-purple-400/20 bg-purple-500/20 px-2 py-0.5 text-[10px] font-extrabold text-purple-300'>
+            在线
+          </span>
+        </div>
+
+        <div className='space-y-1.5'>
+          <p className='text-[11px] font-bold uppercase tracking-wider text-purple-200/80'>
+            快速问答与智能推荐
+          </p>
+          <p className='text-sm font-semibold leading-relaxed text-slate-100'>
+            重找工具、对比性能、生成报告。一站式为您提供沉浸式生产力体验。
+          </p>
+        </div>
+
+        <div className='relative'>
+          <input
+            type='text'
+            placeholder="向助手提问：例如 '推荐最热门大模型'"
+            className='w-full rounded-xl border border-white/10 bg-white/10 py-2 pl-3 pr-10 text-sm font-semibold text-slate-100 outline-none transition-all placeholder:text-white/50 hover:bg-white/15 focus:border-white focus:bg-white focus:text-slate-800 focus:placeholder:text-slate-400'
+          />
           <button
             type='button'
-            className='text-[0.75rem] font-medium text-[#6366f1] sm:text-[0.8rem]'
+            aria-label='发送'
+            className='absolute right-1.5 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-lg bg-white text-purple-900 shadow-md transition-all hover:bg-purple-50'
           >
-            查看全部
+            →
           </button>
         </div>
-        <ul className='mt-3'>
-          {PICKS.map((p) => (
-            <li
-              key={p.id}
-              className='flex items-center gap-2.5 border-b border-[#f2f3f5] py-2.5 last:border-none sm:gap-3 sm:py-3'
-            >
-              <span
-                className='flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg text-[0.85rem] sm:h-8 sm:w-8 sm:text-[0.9rem]'
-                style={{ backgroundColor: p.iconBg, color: p.iconColor }}
-              >
-                {p.icon}
-              </span>
-              <div className='min-w-0 flex-1'>
-                <div className='truncate text-[0.8rem] font-medium text-[#1f2328] sm:text-[0.85rem]'>
-                  {p.title}
-                </div>
-                <div className='text-[0.7rem] text-[#9096a2] sm:text-[0.75rem]'>
-                  {p.source}
-                </div>
-              </div>
-              <span className='flex-shrink-0 text-[0.68rem] text-[#9096a2] sm:text-[0.72rem]'>
-                {p.time}
-              </span>
-            </li>
-          ))}
-        </ul>
       </div>
-    </div>
+    </section>
+  )
+}
+
+function TodayRecommend() {
+  return (
+    <section className='rounded-2xl border border-slate-100 bg-white p-5 shadow-sm sm:p-6'>
+      <div className='mb-4 flex items-center justify-between'>
+        <div className='flex items-center gap-2'>
+          <h3 className='flex items-center gap-2 text-sm font-bold text-slate-900 sm:text-base'>
+            <span className='text-purple-600'>📈</span>
+            今日推荐
+          </h3>
+          <span className='rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-bold text-slate-600'>
+            {PICKS.length} 条
+          </span>
+        </div>
+        <button
+          type='button'
+          className='text-sm font-bold text-purple-600 hover:text-purple-700 sm:text-sm'
+        >
+          查看全部
+        </button>
+      </div>
+
+      <div className='space-y-3'>
+        {PICKS.map((pick) => (
+          <a
+            key={pick.id}
+            href='#'
+            className='group flex items-center gap-3 rounded-xl p-2 no-underline transition-colors hover:bg-slate-50'
+          >
+            <span
+              className='flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-sm font-bold'
+              style={{ backgroundColor: pick.iconBg, color: pick.iconColor }}
+            >
+              {pick.icon}
+            </span>
+            <span className='min-w-0 flex-1'>
+              <span className='block truncate text-sm font-bold text-slate-800 transition-colors group-hover:text-purple-600'>
+                {pick.title}
+              </span>
+              <span className='mt-0.5 block truncate text-[11px] font-semibold text-slate-400'>
+                {pick.source}
+              </span>
+            </span>
+            <span className='shrink-0 text-[11px] font-semibold text-slate-400'>{pick.time}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function SparklesIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox='0 0 24 24' fill='none' aria-hidden='true'>
+      <path d='M12 3.5 13.7 8l4.8 1.7-4.8 1.8L12 16l-1.7-4.5-4.8-1.8L10.3 8 12 3.5Z' stroke='currentColor' strokeWidth='1.8' strokeLinejoin='round' />
+    </svg>
   )
 }

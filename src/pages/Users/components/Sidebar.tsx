@@ -2,7 +2,7 @@ import { NAV_ITEMS } from '../data'
 
 export function Sidebar({
   active,
-  onSelect
+  onSelect,
 }: {
   active: string
   onSelect: (id: string) => void
