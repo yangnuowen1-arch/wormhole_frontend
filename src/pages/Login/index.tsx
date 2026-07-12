@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import PrismaticBurst from '../../components/PrismaticBurst'
 import TextType from '../../components/TextType'
@@ -11,11 +11,22 @@ const burstOffset = { x: 0, y: 0 }
 
 function Login() {
   const [open, setOpen] = useState(false)
+  const [isSigningIn, setIsSigningIn] = useState(false)
+  const signInStartedRef = useRef(false)
   const [searchParams] = useSearchParams()
   const returnTo = useMemo(
     () => normalizeReturnTo(searchParams.get('redirect')),
     [searchParams],
   )
+  const handleLogin = useCallback(() => {
+    if (signInStartedRef.current) {
+      return
+    }
+
+    signInStartedRef.current = true
+    setIsSigningIn(true)
+    handleSSOLogin(returnTo)
+  }, [returnTo])
 
   return (
     <section className='relative isolate min-h-screen overflow-hidden bg-black text-white'>
@@ -99,13 +110,13 @@ function Login() {
                 </p>
               </div>
 
-              <div
-                className='flex flex-col gap-3 p-5 sm:gap-3.5 sm:p-6'
-                onClick={() => handleSSOLogin(returnTo)}
-              >
+              <div className='flex flex-col gap-3 p-5 sm:gap-3.5 sm:p-6'>
                 <button
                   type='button'
-                  className='group relative flex w-full cursor-pointer items-center justify-center gap-2.5 overflow-hidden rounded-xl border border-white/15 bg-white/10 p-[1px] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md transition-all duration-200 hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200'
+                  onClick={handleLogin}
+                  disabled={isSigningIn}
+                  aria-busy={isSigningIn}
+                  className='group relative flex w-full cursor-pointer items-center justify-center gap-2.5 overflow-hidden rounded-xl border border-white/15 bg-white/10 p-[1px] shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md transition-all duration-200 hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-70'
                 >
                   <div className='flex w-full items-center justify-center gap-2 rounded-[10px] bg-white/8 px-4 py-3 text-sm font-semibold text-white transition-colors duration-200 group-hover:bg-white/12 sm:gap-2.5 sm:py-3.5 sm:text-base'>
                     <svg
@@ -121,7 +132,7 @@ function Login() {
                     >
                       <path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' />
                     </svg>
-                    <span>使用 SSO 继续</span>
+                    <span>{isSigningIn ? '正在跳转...' : '使用 SSO 继续'}</span>
                   </div>
                 </button>
               </div>
