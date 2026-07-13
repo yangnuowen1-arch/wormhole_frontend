@@ -12,5 +12,13 @@ export interface CurrentUser {
   email: string
   id: number
   nickname: string
+  roles?: UserRole[]
   username: string
+}
+
+export interface UserRole {
+  code: string
+  description?: string
+  id?: number
+  name?: string
 }

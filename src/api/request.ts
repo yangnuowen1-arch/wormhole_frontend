@@ -1,7 +1,7 @@
 import type { ApiResponse } from './types'
 
 export const API_BASE_URL = (
-  import.meta.env.VITE_API_BASE_URL ?? 'http://192.168.31.28:8081/api/v1'
+  import.meta.env.VITE_API_BASE_URL ?? '/api/v1'
 ).replace(/\/$/, '')
 
 export class ApiError extends Error {
@@ -24,12 +24,12 @@ export async function apiRequest<T>(
 ): Promise<T> {
   const url = `${API_BASE_URL}${path.startsWith('/') ? path : `/${path}`}`
   const response = await fetch(url, {
+    ...init,
     credentials: 'include',
     headers: {
       Accept: 'application/json',
       ...init.headers,
     },
-    ...init,
   })
 
   let body: ApiResponse<T> | undefined

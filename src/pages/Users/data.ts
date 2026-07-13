@@ -9,6 +9,10 @@ export interface Shortcut {
   label: string
   icon: string
   color: string
+  description?: string
+  numericId?: number
+  sortOrder?: number
+  targetUrl?: string
 }
 
 export interface Pick {
@@ -19,6 +23,10 @@ export interface Pick {
   icon: string
   iconBg: string
   iconColor: string
+  numericId?: number
+  publishedAt?: string
+  sortOrder?: number
+  targetUrl?: string
 }
 
 export interface Tool {
@@ -35,6 +43,8 @@ export interface ResourceCategory {
   id: string
   label: string
   icon: string
+  numericId?: number
+  sortOrder?: number
 }
 
 export interface Resource {
@@ -48,6 +58,29 @@ export interface Resource {
   category: string
   color: string
   bg: string
+  description?: string
+  featured?: boolean
+  followerCount?: number
+  modelCount?: number
+  numericId?: number
+  sortOrder?: number
+  targetUrl?: string
+}
+
+export interface Slide {
+  id: string
+  title: string
+  subtitle: string
+  description: string
+  buttonText: string
+  background: string
+  accent: string
+  code?: string
+  imageUrl?: string
+  numericId?: number
+  sortOrder?: number
+  targetUrl: string
+  autoplaySeconds?: number
 }
 
 export const NAV_ITEMS: NavItem[] = [
@@ -60,20 +93,67 @@ export const NAV_ITEMS: NavItem[] = [
 ]
 
 export const SHORTCUTS: Shortcut[] = [
-  { key: 'github', label: 'GitHub', icon: '</>', color: '#1f2328' },
-  { key: 'vercel', label: 'Vercel', icon: '▲', color: '#1f2328' },
-  { key: 'figma', label: 'Figma', icon: '❖', color: '#f24e1e' },
-  { key: 'claude', label: 'Claude', icon: '✳', color: '#8b5cf6' },
-  { key: 'linear', label: 'Linear', icon: '▤', color: '#5e6ad2' },
-  { key: 'supabase', label: 'Supabase', icon: '⬡', color: '#3ecf8e' },
+  { key: 'github', label: 'GitHub', icon: '</>', color: '#1f2328', description: '代码托管平台', targetUrl: 'https://github.com', sortOrder: 10 },
+  { key: 'vercel', label: 'Vercel', icon: '▲', color: '#1f2328', description: '前端部署平台', targetUrl: 'https://vercel.com', sortOrder: 20 },
+  { key: 'figma', label: 'Figma', icon: '❖', color: '#f24e1e', description: '协同设计工具', targetUrl: 'https://figma.com', sortOrder: 30 },
+  { key: 'claude', label: 'Claude', icon: '✳', color: '#8b5cf6', description: 'AI 助手', targetUrl: 'https://claude.ai', sortOrder: 40 },
+  { key: 'linear', label: 'Linear', icon: '▤', color: '#5e6ad2', description: '项目管理', targetUrl: 'https://linear.app', sortOrder: 50 },
+  { key: 'supabase', label: 'Supabase', icon: '⬡', color: '#3ecf8e', description: '应用后端平台', targetUrl: 'https://supabase.com', sortOrder: 60 },
 ]
 
 export const PICKS: Pick[] = [
-  { id: 'p1', title: '用 Vercel Edge Config 更快发布', source: 'Vercel 博客', time: '1 小时前', icon: '⚡', iconBg: '#eef2ff', iconColor: '#6366f1' },
-  { id: 'p2', title: 'Claude 3.5：工程师需要了解的要点', source: 'Anthropic', time: '3 小时前', icon: '✳', iconBg: '#f5f3ff', iconColor: '#8b5cf6' },
-  { id: 'p3', title: '用 Figma Variables 打造可扩展的设计系统', source: 'Figma', time: '5 小时前', icon: '❖', iconBg: '#fff1ed', iconColor: '#f24e1e' },
-  { id: 'p4', title: '大规模零停机 Postgres 迁移实践', source: 'PlanetScale', time: '8 小时前', icon: '⬢', iconBg: '#ecfdf5', iconColor: '#10b981' },
+  { id: 'p1', numericId: 1, title: '用 Vercel Edge Config 更快发布', source: 'Vercel 博客', time: '1 小时前', icon: '⚡', iconBg: '#eef2ff', iconColor: '#6366f1', publishedAt: '2026-07-12T10:30:00+08:00', sortOrder: 10, targetUrl: 'https://vercel.com/blog' },
+  { id: 'p2', numericId: 2, title: 'Claude 3.5：工程师需要了解的要点', source: 'Anthropic', time: '3 小时前', icon: '✳', iconBg: '#f5f3ff', iconColor: '#8b5cf6', publishedAt: '2026-07-12T08:30:00+08:00', sortOrder: 20, targetUrl: 'https://www.anthropic.com/news' },
+  { id: 'p3', numericId: 3, title: '用 Figma Variables 打造可扩展的设计系统', source: 'Figma', time: '5 小时前', icon: '❖', iconBg: '#fff1ed', iconColor: '#f24e1e', publishedAt: '2026-07-12T06:30:00+08:00', sortOrder: 30, targetUrl: 'https://www.figma.com/blog' },
+  { id: 'p4', numericId: 4, title: '大规模零停机 Postgres 迁移实践', source: 'PlanetScale', time: '8 小时前', icon: '⬢', iconBg: '#ecfdf5', iconColor: '#10b981', publishedAt: '2026-07-12T03:30:00+08:00', sortOrder: 40, targetUrl: 'https://planetscale.com/blog' },
 ]
+
+export const SLIDES: Slide[] = [
+  {
+    id: 's1',
+    numericId: 1,
+    code: 'ai-console',
+    title: 'AI 助手控制台',
+    subtitle: '智能生产力专栏',
+    description: '重找工具、对比性能、生成报告，一站式串联您的工作流。',
+    buttonText: '进入控制台',
+    background: '#0f172a',
+    accent: '#38bdf8',
+    sortOrder: 10,
+    targetUrl: 'https://openai.com',
+    autoplaySeconds: 5,
+  },
+  {
+    id: 's2',
+    numericId: 2,
+    code: 'resource-map',
+    title: '资源图谱更新',
+    subtitle: '本周新增 24 个入口',
+    description: '覆盖模型生态、数据平台、安全工具和设计资源。',
+    buttonText: '查看资源',
+    background: '#064e3b',
+    accent: '#a7f3d0',
+    sortOrder: 20,
+    targetUrl: 'https://huggingface.co',
+    autoplaySeconds: 5,
+  },
+  {
+    id: 's3',
+    numericId: 3,
+    code: 'admin-lane',
+    title: '配置中心上线',
+    subtitle: '管理员专栏',
+    description: '快速调整轮播、推荐和快捷入口排序，保持门户内容新鲜。',
+    buttonText: '查看配置',
+    background: '#7f1d1d',
+    accent: '#fde68a',
+    sortOrder: 30,
+    targetUrl: '/users',
+    autoplaySeconds: 5,
+  },
+]
+
+export const DEFAULT_COMMON_TOOL_IDS = ['openai', 'github', 'anthropic']
 
 // 常用工具（横向卡片：图标 + 名称 + 用途 + 域名）
 export const TOOLS: Tool[] = [
