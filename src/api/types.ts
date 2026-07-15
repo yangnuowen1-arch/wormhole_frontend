@@ -9,12 +9,20 @@ export interface ApiResponse<T> {
 }
 
 export interface CurrentUser {
+  avatar?: string
+  createdAt?: string
   email: string
   id: number
+  keycloakId?: string
+  lastLoginAt?: string
   nickname: string
   roles?: UserRole[]
+  status?: number
+  updatedAt?: string
   username: string
 }
+
+export type AdminUser = CurrentUser
 
 export interface UserRole {
   code: string

@@ -12,6 +12,17 @@ export async function requireAuthLoader({ request }: LoaderFunctionArgs) {
   }
 }
 
+export async function requireAdminLoader(args: LoaderFunctionArgs) {
+  const user = await requireAuthLoader(args)
+  const isAdmin = user.roles?.some((role) => role.code === 'admin') ?? false
+
+  if (!isAdmin) {
+    throw redirect('/users')
+  }
+
+  return user
+}
+
 export async function loginLoader() {
   try {
     await getCurrentUser()

@@ -5,7 +5,12 @@ import './index.css'
 import Layout from './Layout.tsx'
 import Login from './pages/Login/index.tsx'
 import Users from './pages/Users/index.tsx'
-import { loginLoader, requireAuthLoader } from './router/auth'
+import RoleAssignment from './pages/RoleAssignment/index.tsx'
+import {
+  loginLoader,
+  requireAdminLoader,
+  requireAuthLoader
+} from './router/auth'
 
 const router = createBrowserRouter([
   {
@@ -17,7 +22,14 @@ const router = createBrowserRouter([
       {
         id: 'protected',
         loader: requireAuthLoader,
-        children: [{ path: 'users', element: <Users /> }],
+        children: [
+          { path: 'users', element: <Users /> },
+          {
+            path: 'users/role-assignment',
+            loader: requireAdminLoader,
+            element: <RoleAssignment />
+          }
+        ],
       },
     ],
   },
