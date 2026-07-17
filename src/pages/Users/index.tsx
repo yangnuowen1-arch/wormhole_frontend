@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { message } from 'antd'
 import { useRouteLoaderData } from 'react-router-dom'
+import { API_BASE_URL } from '../../api/request'
 import type { CurrentUser } from '../../api/types'
 import {
   addCommonTool,
@@ -56,6 +57,7 @@ import {
 
 const SEARCH_HISTORY_KEY = 'wormhole_recent_searches'
 const QUICK_ENTRY_IDS_KEY = 'wormhole_quick_entry_resource_ids'
+const LOGOUT_RETURN_TO = '/login'
 
 function Users() {
   const user = useRouteLoaderData('protected') as CurrentUser | undefined
@@ -85,6 +87,10 @@ function Users() {
   const roles = useMemo(() => getRoleCodes(user), [user])
   const isAdmin = roles.includes('admin')
   const userName = user?.nickname || user?.username || '用户'
+
+  const handleLogout = useCallback(() => {
+    window.location.href = `${API_BASE_URL}/auth/logout?return_to=${LOGOUT_RETURN_TO}`
+  }, [])
 
   const commonTools = useMemo(
     () =>
@@ -775,6 +781,7 @@ function Users() {
           userName={userName}
           onLoadAdminAnnouncements={loadAdminAnnouncements}
           onSaveAnnouncement={handleSaveAnnouncement}
+          onLogout={handleLogout}
           onToggleEditMode={() => {
             if (isAdmin) {
               setEditMode((current) => !current)

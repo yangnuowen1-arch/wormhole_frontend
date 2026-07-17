@@ -11,6 +11,7 @@ interface TopBarProps {
   isAdminAnnouncementsLoading: boolean
   userName: string
   onLoadAdminAnnouncements: () => Promise<void> | void
+  onLogout: () => void
   onSaveAnnouncement: (
     announcement: Announcement | undefined,
     payload: AdminAnnouncementPayload
@@ -28,8 +29,9 @@ export function TopBar({
   editMode,
   isAdmin,
   isAdminAnnouncementsLoading,
-  // userName,
+  userName,
   onLoadAdminAnnouncements,
+  onLogout,
   onSaveAnnouncement,
   onToggleEditMode,
   onUpdateAnnouncementStatus
@@ -87,6 +89,25 @@ export function TopBar({
             </span>
           </button>
         )}
+        <div className='hidden h-4 w-px bg-slate-200 sm:block' />
+        <div className='flex min-w-0 items-center gap-2'>
+          <span
+            className='hidden max-w-28 truncate text-xs font-bold text-slate-500 lg:inline'
+            title={userName}
+          >
+            {userName}
+          </span>
+          <button
+            type='button'
+            aria-label='退出登录'
+            title='退出登录'
+            onClick={onLogout}
+            className='flex h-8 cursor-pointer shrink-0 items-center justify-center gap-1.5 rounded-lg border border-rose-100 bg-rose-50 px-2 text-rose-600 transition-colors hover:bg-rose-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-200 sm:px-2.5'
+          >
+            <LogoutIcon className='h-4 w-4' />
+            <span className='hidden text-xs font-bold md:inline'>退出</span>
+          </button>
+        </div>
       </div>
     </header>
   )
@@ -146,6 +167,25 @@ function SettingsIcon({ className }: { className?: string }) {
         d='M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 1.55V21a2 2 0 0 1-4 0v-.08a1.7 1.7 0 0 0-1-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.55-1H3a2 2 0 0 1 0-4h.08a1.7 1.7 0 0 0 1.55-1 1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.55V3a2 2 0 0 1 4 0v.08a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c.22.6.79 1 1.55 1H21a2 2 0 0 1 0 4h-.08a1.7 1.7 0 0 0-1.55 1Z'
         stroke='currentColor'
         strokeWidth='1.6'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
+    </svg>
+  )
+}
+
+function LogoutIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox='0 0 24 24'
+      fill='none'
+      aria-hidden='true'
+    >
+      <path
+        d='M10 6H6.8A2.8 2.8 0 0 0 4 8.8v6.4A2.8 2.8 0 0 0 6.8 18H10M15 8l4 4m0 0-4 4m4-4H9'
+        stroke='currentColor'
+        strokeWidth='1.8'
         strokeLinecap='round'
         strokeLinejoin='round'
       />

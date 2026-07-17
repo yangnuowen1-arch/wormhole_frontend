@@ -1,7 +1,7 @@
 import type { ApiResponse } from './types'
 
 export const API_BASE_URL = (
-  import.meta.env.VITE_API_BASE_URL ?? '/api/v1'
+  import.meta.env.VITE_API_PROXY_TARGET ?? '/api/v1'
 ).replace(/\/$/, '')
 
 export class ApiError extends Error {
